@@ -4,7 +4,7 @@ using VMdemo.Models;
 
 public class FranchiseBuilder
 {
-    public Franchise SellFranchise()
+    public List<Franchise> SellFranchise()
     {
         Employee one = new Employee()
         {
@@ -35,9 +35,26 @@ public class FranchiseBuilder
         {
             Name = "West Nashville",
             Budget = 1000000000.00,
-            Employees = new List<Employee>(){one, two, three, four}
+            Manager = one,
+            Id = 1
         };
 
-        return WestNashvilleLocation;
+        Franchise WhiteBridgeRd = new Franchise()
+        {
+            Name = "Whitebridge Road",
+            Budget = 1000000000.00,
+            Manager = two,
+            Id = 2
+        };
+
+        Franchise DowntownNashville = new Franchise()
+        {
+            Name = "Downtown Nashville",
+            Budget = 1000000000.00,
+            Manager = three,
+            Id = 3
+        };
+
+        return new List<Franchise>{WestNashvilleLocation, WhiteBridgeRd, DowntownNashville};
     }
 }

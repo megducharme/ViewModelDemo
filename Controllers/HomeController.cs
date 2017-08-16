@@ -12,37 +12,42 @@ namespace VMdemo.Controllers
     {
         public IActionResult Index()
         {
-            Employee employee = new Employee()
-            {
-                Name = "Meg",
-                Birthday = new DateTime(1988, 3, 21),
-                Email = "meg@meg.com",
-                FranchiseId = 1
-            };
-            return View(employee);
-        }
-
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
             FranchiseBuilder company = new FranchiseBuilder();
-            SupplierBuilder supplier = new SupplierBuilder();
 
-            ProductOrderingViewModel viewModel = new ProductOrderingViewModel();
+            List<Franchise> allStores = company.SellFranchise();
 
-            viewModel.Store = company.SellFranchise();
-            viewModel.Suppliers = supplier.OrderStuff();
-            Console.WriteLine(viewModel);
+            StoreListViewModel viewModel = new StoreListViewModel();
+            viewModel.Stores = allStores;
 
             return View(viewModel);
         }
 
-        public IActionResult Contact()
+        public IActionResult About(int id)
+        {
+            SupplierBuilder supplier = new SupplierBuilder();
+            FranchiseBuilder company = new FranchiseBuilder();
+
+            List<Franchise> allStores = company.SellFranchise();
+
+            ProductOrderingViewModel viewModel = new ProductOrderingViewModel();
+            viewModel.Store = allStores.SingleOrDefault(store => store.Id == id);
+            viewModel.Suppliers = supplier.OrderStuff();
+
+            return View(viewModel);
+        }
+
+        public IActionResult Employee()
         {
             ViewData["Message"] = "Your contact page.";
-
-            return View();
+            Employee meg = new Employee()
+            {
+                Name = "Meg Ducharme",
+                Birthday = new DateTime(1988, 3, 21),
+                Email = "meg@meg.com",
+                FranchiseId = 1
+            };
+            
+            return View(meg);
         }
 
         public IActionResult Error()

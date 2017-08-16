@@ -1,7 +1,15 @@
-﻿@model VMdemo.Models.Employee
+﻿@model VMdemo.ViewModels.StoreListViewModel
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Starbucks Ordering System";
 }
 
-<h2>@Model.Name is an employee at the @Model.FranchiseId Starbucks.</h2>
+<h1>@ViewData["Title"]</h1>
+
+@foreach(var store in Model.Stores)
+{
+    <div>
+        <h3><a asp-action="About" asp-controller="Home" asp-route-id="@store.Id">@store.Name</a></h3>
+        <h5>Store Manager: @store.Manager.Name</h5>
+    </div>
+}
