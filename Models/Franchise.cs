@@ -8,6 +8,7 @@ namespace VMdemo.Models
     {
         public string Name {get;set;}
         public double Budget {get;set;}
-        public List<Employee> Employees {get;set;}
+        public Employee Manager {get;set;}
+        public int Id {get;set;}
     }
 }

@@ -1,0 +1,11 @@
+@model VMdemo.Models.Employee
+
+@{
+    ViewData["Title"] = "The Best Employee Ever!";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>@Model.Name</h3>
+<h5>@Model.Birthday</h5>
+<h5>Starbucks Location: @Model.FranchiseId</h5>

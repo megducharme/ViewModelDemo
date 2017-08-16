@@ -1,6 +1,7 @@
 ﻿@model VMdemo.ViewModels.ProductOrderingViewModel
 
-<h1>Current Store: @Model.Store.Name.</h1><br>
+<h1>Current Store: @Model.Store.Name</h1>
+<h4>Store Manager: @Model.Store.Manager.Name<h4><br>
 
 @foreach(var supplier in Model.Suppliers)
 {
