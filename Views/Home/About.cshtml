@@ -1,0 +1,18 @@
+﻿@model VMdemo.ViewModels.ProductOrderingViewModel
+
+<h1>Current Store: @Model.Store.Name.</h1><br>
+
+@foreach(var supplier in Model.Suppliers)
+{
+    <h3>@supplier.Name</h3>
+
+    <ul> @foreach(var product in supplier.Products)
+    {
+        <div class="row">
+            <div class="col-md-3">@Html.DisplayFor(modelItem => product.Name)</div>
+            <div class="col-md-3">@Html.DisplayFor(modelItem => product.Price)</div>
+            <div><a class="btn btn-default">Purchase</a></div>
+        </div>
+    }
+    </ul>
+}
